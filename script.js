@@ -66,17 +66,21 @@ const gameInit = () => {
 
   // update game score
 
-  score.innerHTML = ` <span class="score">Score :${gameScore} </span>`;
+  score.innerHTML = ` <span class="score">Score : ${gameScore} </span>`;
 
   // get high score from local storage
 
-  const getScore = localStorage.getItem("high-score");
+  let getScore = localStorage.getItem("high-score");
+
+  if (!getScore) {
+    getScore = 0;
+  }
 
   if (gameScore > getScore) {
     localStorage.setItem("high-score", gameScore);
   }
 
-  highScore.innerHTML = ` <span class="score">Highest-Score :${getScore} </span>`;
+  highScore.innerHTML = ` <span class="score">Highest-Score : ${getScore} </span>`;
 
   //   if snake hit the game border then game is over
 
